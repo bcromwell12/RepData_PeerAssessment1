@@ -97,7 +97,7 @@ with(woof1,plot(interval,average,type = "l"))
 ```{r}
 data_nas <- filter(data,is.na(steps) == TRUE)
 ```
-###Then number of NA terms is: `r dim(data_nas)[2]`
+###Then number of NA terms is: `r dim(data_nas)[1]`
 
 
 
