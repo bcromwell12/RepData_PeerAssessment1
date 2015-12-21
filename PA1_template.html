@@ -163,6 +163,10 @@ best_time &lt;- select(filter(woof1,average == p), interval)</code></pre>
 </div>
 <div id="imputing-missing-values" class="section level2">
 <h2>Imputing missing values</h2>
+<pre class="r"><code>data_nas &lt;- filter(data,is.na(steps) == TRUE)</code></pre>
+<div id="then-number-of-na-terms-is-3" class="section level3">
+<h3>Then number of NA terms is: 3</h3>
+</div>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>

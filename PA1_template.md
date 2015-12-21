@@ -148,5 +148,11 @@ with(woof1,plot(interval,average,type = "l"))
 ## Imputing missing values
 
 
+```r
+data_nas <- filter(data,is.na(steps) == TRUE)
+```
+###Then number of NA terms is: 3
+
+
 
 ## Are there differences in activity patterns between weekdays and weekends?
