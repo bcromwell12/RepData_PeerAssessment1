@@ -75,9 +75,18 @@ for(i in 2:q){
 woof <- cbind(woof,select(filter(dat,date == arr[2]),interval))
 
 woof <- tbl_df(woof)
+names(woof)<- c(1:53)
+names(woof)[54] <- "interval"
+woof1 <- mutate(woof,average = rowSums(woof)/ncol(woof))
 
+p <- max(woof1$average)
+best_time <- select(filter(woof1,average == p), interval)
+```
 
+* the max average is `r p ` found at the time interval `r best_time`
 
+```{r}
+with(woof1,plot(interval,average,type = "l"))
 ```
 
 

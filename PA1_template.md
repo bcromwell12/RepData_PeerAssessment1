@@ -80,10 +80,68 @@ g1 + geom_bar(stat = "identity")
 
 ![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
 
+```r
+g <- ggplot(meow,aes(date,median))
+g + geom_bar(stat = "identity")
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-4-2.png) 
+
 *the mean of all days is:37.3825996
+
 *The median is: 0
 
 ## What is the average daily activity pattern?
+
+
+```r
+data <- read.csv("activity.csv")
+dat <- filter(data,!is.na(steps))
+arr <- levels(data$date)
+
+q <- length(arr)
+q
+```
+
+```
+## [1] 61
+```
+
+```r
+count <- 0
+for(i in 2:q){
+  if(count == 0){
+    woof <- select(filter(dat, date == arr[i]),steps)
+    count <- 1
+    count
+    woof
+  }
+  else{
+    if(dim(select(filter(dat,date == arr[i]),steps))[1] != 0){
+      woof <- cbind(woof,select(filter(dat,date == arr[i]),steps))
+    }
+  }
+}
+woof <- cbind(woof,select(filter(dat,date == arr[2]),interval))
+
+woof <- tbl_df(woof)
+names(woof)<- c(1:53)
+names(woof)[54] <- "interval"
+woof1 <- mutate(woof,average = rowSums(woof)/ncol(woof))
+
+p <- max(woof1$average)
+best_time <- select(filter(woof1,average == p), interval)
+```
+
+* the max average is 217.8148148 found at the time interval 835
+
+
+```r
+with(woof1,plot(interval,average,type = "l"))
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
+
 
 
 
