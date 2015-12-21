@@ -41,8 +41,6 @@ meow <- summarise(data,mean(steps),median(steps))
 names(meow) <- c("date","mean","median")
 g1 <- ggplot(meow,aes(date,mean))
 g1 + geom_bar(stat = "identity")
-g <- ggplot(meow,aes(date,median))
-g + geom_bar(stat = "identity")
 ```
 
 *the mean of all days is:`r mean(meow$mean)`
