@@ -151,7 +151,10 @@ with(woof1,plot(interval,average,type = "l"))
 ```r
 data_nas <- filter(data,is.na(steps) == TRUE)
 ```
-###Then number of NA terms is: 3
+###Then number of NA terms is: 2304
+### we would use the daily means calculated earlier to fill in these numbers in order to have fuller data
+
+
 
 
 
